@@ -41,8 +41,8 @@ def extract_indeed_jobs(keyword):
     for page in range(pages):
         base_url = "https://kr.indeed.com/jobs"
         final_url = f"{base_url}?q={keyword}&start={page*10}"
-        print("page_num", page)
-        print(final_url)
+        # print("page_num", page)
+        # print(final_url)
         browser.get(final_url)
         response = browser.page_source
 
@@ -56,11 +56,11 @@ def extract_indeed_jobs(keyword):
                 anchor = job.select_one("h2 a")
                 title = anchor['aria-label']
                 link = anchor['href']
-                company = job.find('span', class_="companyName")
-                location = job.find('div', class_="companyLocation")
+                company = job.find('span', class_="companyName").string
+                location = job.find('div', class_="companyLocation").string
                 job_data = {
-                    "company": company.string.replace(',', ' '),
-                    "location": location.string.replace(',', ' '),
+                    "company": company.replace(',', ' '),
+                    "location": location.replace(',', ' '),
                     "position": title.replace(',', ' '),
                     "link": f"https://www.indeed.com{link}"
                 }
