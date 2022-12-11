@@ -9,7 +9,16 @@
 </head>
 
 <body>
-    <h1>Search Result</h1>
+    <h2>Search Result : {{keyword}}</h2>
+    {% for job in jobs %}
+    <div>
+        <span>{{job.company}}</span>
+        <span>{{job.position}}</span>
+        <span>{{job.location}}</span>
+        <a href="{{job.link}}" target="_blank"> Apply Now &rarr; </a>
+    </div>
+
+    {% endfor %}
 </body>
 
 </html>
