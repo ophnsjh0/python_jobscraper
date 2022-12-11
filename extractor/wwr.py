@@ -33,3 +33,6 @@ def extract_wwr_jobs(keyword):
                 results.append(job_data)
 
         return results
+
+
+extract_wwr_jobs("python")
