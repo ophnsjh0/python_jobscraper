@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html lang="kr">
+<html lang="kr" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pico.min.css')}}">
+    <!--<link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">-->
     <title>Job Scarper</title>
 </head>
 <body>
-    <h1>Job Scraper</h1>
-    <h4>Please enter the job you are searching for ? {{name}}<h4>
-    <form action='/search'>
-        <input type='text' name='keyword' placeholder='job Entry'>
-        <button>Search</button>
-    </form>
+    <main class="container">
+        <h1>Job Scraper</h1>
+        <h4>Please enter the job you are searching for ? <h4>
+        <form action='/search'>
+            <input type='text' name='keyword' placeholder='job Entry'>
+            <button>Search</button>
+        </form>
+    </main>
 </body>
 </html>

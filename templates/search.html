@@ -1,24 +1,37 @@
 <!DOCTYPE html>
-<html lang="kr">
+<html lang="kr" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pico.min.css')}}">
     <title>Document</title>
 </head>
 
 <body>
-    <h2>Search Result : {{keyword}}</h2>
-    {% for job in jobs %}
-    <div>
-        <span>{{job.company}}</span>
-        <span>{{job.position}}</span>
-        <span>{{job.location}}</span>
-        <a href="{{job.link}}" target="_blank"> Apply Now &rarr; </a>
-    </div>
-
-    {% endfor %}
+    <main class="container">
+        <h2>Search Result : {{keyword}}</h2>
+        <a href="/export?keyword={{keyword}}">Export</a>
+        <table role="grid">
+            <thead>
+              <tr>
+                <th scope="col">회사</th>
+                <th scope="col">직종 (내용)</th>
+                <th scope="col">지역</th>
+                <th scope="col">링크</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                {% for job in jobs %}
+                    <td>{{job.company}}</td>
+                    <td>{{job.position}}</td>
+                    <td>{{job.location}}</td>
+                    <td><a href="{{job.link}}" target="_blank"> Apply Now &rarr; </a></td>
+                </tr>
+                {% endfor %}   
+    </main>
 </body>
 
 </html>
